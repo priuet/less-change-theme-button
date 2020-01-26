@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Css vs Less</title>
+    <!-- <link rel="stylesheet" href="less/less-styles.th2.css"> -->
+    <!-- <link rel="stylesheet" href="css/css-styles.th1.css"> -->
+    <script>
+        var theme_number = 1;
+        var default_theme = 1;
+        var ext = 'css';
+
+        function getUrl (num) {
+            return ext + '/' + ext + '-styles.th' + num + '.css'
+        }
+
+        function getThemeNumber () {
+            theme_number = theme_number % 2 == 0 ? 1 : 2;
+            return theme_number;
+        }
+
+        function initialize () {
+            var link = document.createElement ('link');
+            link.setAttribute ('rel', 'stylesheet');
+            link.setAttribute ('href', getUrl(default_theme));
+            document.head.appendChild(link);
+        }
+
+        function initListener() {
+            document
+                .querySelector('.nav__theme')
+                .addEventListener('click', changeTheme)
+        }
+
+        function changeTheme() {
+            document.head
+                .querySelector('link')
+                .setAttribute('href', getUrl(getThemeNumber()))
+        }
+        initialize ();
+        window.addEventListener('load', initListener);
+    </script>
+</head>
+<body>
+
+<div class="wrapper">
+    <nav class="nav">
+        <button class="nav__theme">Change theme</button>
+        <ul class="nav__menu">
+            <li class="nav__item"><a href="#" class="nav__link">Home</a></li>
+            <li class="nav__item"><a href="#" class="nav__link">About</a></li>
+            <li class="nav__item"><a href="#" class="nav__link">Items</a></li>
+            <li class="nav__item"><a href="#" class="nav__link">Contact</a></li>
+        </ul>
+    </nav>
+    <section class="main">
+        <div class="main__content">
+            <div class="main__tile main__tile--danger">
+                <div class="main__header">Product 1</div>
+                <ul class="main__features">
+                    <li class="main__item">Feature 1 <span class="main__plus">+</span></li>
+                    <li class="main__item">Feature 2 <span class="main__plus">+</span></li>
+                    <li class="main__item">Feature 3 <span class="main__plus">+</span></li>
+                    <li class="main__item">Feature 4</li>
+                    <li class="main__item">Feature 5</li>
+                </ul>
+                <div class="main__footer">
+                    <button class="main__button main__button--danger">Click on me!</button>
+                </div>
+            </div>
+            <div class="main__tile main__tile--warning">
+                <div class="main__header">Product 2</div>
+                <ul class="main__features">
+                    <li class="main__item">Feature 1<span class="main__plus">+</span></li>
+                    <li class="main__item">Feature 2</li>
+                    <li class="main__item">Feature 3<span class="main__plus">+</span></li>
+                    <li class="main__item">Feature 4<span class="main__plus">+</span></li>
+                    <li class="main__item">Feature 5</li>
+                </ul>
+                <div class="main__footer">
+                    <button class="main__button main__button--warning">Click on me!</button>
+                </div>
+            </div>
+            <div class="main__tile main__tile--primary">
+                <div class="main__header">Product 3</div>
+                <ul class="main__features">
+                    <li class="main__item">Feature 1</li>
+                    <li class="main__item">Feature 2<span class="main__plus">+</span></li>
+                    <li class="main__item">Feature 3<span class="main__plus">+</span></li>
+                    <li class="main__item">Feature 4<span class="main__plus">+</span></li>
+                    <li class="main__item">Feature 5</li>
+                </ul>
+                <div class="main__footer">
+                    <button class="main__button main__button--primary">Click on me!</button>
+                </div>
+            </div>
+            <div class="main__tile main__tile--success">
+                <div class="main__header">Product 4</div>
+                <ul class="main__features">
+                    <li class="main__item">Feature 1<span class="main__plus">+</span></li>
+                    <li class="main__item">Feature 2</li>
+                    <li class="main__item">Feature 3</li>
+                    <li class="main__item">Feature 4<span class="main__plus">+</span></li>
+                    <li class="main__item">Feature 5<span class="main__plus">+</span></li>
+                </ul>
+                <div class="main__footer">
+                    <button class="main__button main__button--success">Click on me!</button>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+<!-- <script src="node_modules/less/dist/less.min.js"></script> -->
+</body>
+</html>
